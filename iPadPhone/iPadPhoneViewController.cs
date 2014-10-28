@@ -44,17 +44,23 @@ namespace iPadPhone
 			// Set up the event handlers for the device
 			SetupDeviceEvents ();
 
+			// Add the Twilio logo
+			var logo = new UIImageView (new RectangleF (200, 120, 400, 120));
+			logo.Image = UIImage.FromBundle ("Twilio_logo_red");
+			this.View.Add (logo);
+
 			// Add a UITextField for the phone number to call
-			var numberField = new UITextField (new RectangleF (269, 478, 230, 30));
+			var numberField = new UITextField (new RectangleF (200, 320, 400, 30));
 			numberField.BorderStyle = UITextBorderStyle.RoundedRect;
 			numberField.TextAlignment = UITextAlignment.Center;
 			numberField.Placeholder = "Phone number";
 			this.View.Add (numberField);
 
 			// Add a UIButton to initiate the call
-			var callButton = new UIButton (UIButtonType.System);
-			callButton.Frame = new RectangleF (334, 516, 100, 30);
-			callButton.SetTitle ("Initiate Call", UIControlState.Normal);
+			var callButton = new UIButton (UIButtonType.Custom);
+			callButton.SetBackgroundImage(UIImage.FromBundle("call_button"), UIControlState.Normal);
+			callButton.Frame = new RectangleF (200, 380, 400, 40);
+			//callButton.SetTitle ("Initiate Call", UIControlState.Normal);
 			this.View.Add (callButton);
 
 			// Add code to TouchUpInside to place the call when the user taps the button

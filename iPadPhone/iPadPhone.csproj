@@ -114,4 +114,10 @@
       <Visible>False</Visible>
     </XamarinComponentReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Twilio_logo_red~ipad.png" />
+    <BundleResource Include="Resources\Twilio_logo_red%402x~ipad.png" />
+    <BundleResource Include="Resources\call_button%402x~ipad.png" />
+    <BundleResource Include="Resources\call_button~ipad.png" />
+  </ItemGroup>
 </Project>
