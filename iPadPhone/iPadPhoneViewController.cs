@@ -50,7 +50,7 @@ namespace iPadPhone
 			this.View.Add (logo);
 
 			// Add a UITextField for the phone number to call
-			var numberField = new UITextField (new RectangleF (200, 320, 400, 30));
+			var numberField = new UITextField (new RectangleF (200, 300, 400, 30));
 			numberField.BorderStyle = UITextBorderStyle.RoundedRect;
 			numberField.TextAlignment = UITextAlignment.Center;
 			numberField.Placeholder = "Phone number";
@@ -60,7 +60,6 @@ namespace iPadPhone
 			var callButton = new UIButton (UIButtonType.Custom);
 			callButton.SetBackgroundImage(UIImage.FromBundle("call_button"), UIControlState.Normal);
 			callButton.Frame = new RectangleF (200, 380, 400, 40);
-			//callButton.SetTitle ("Initiate Call", UIControlState.Normal);
 			this.View.Add (callButton);
 
 			// Add code to TouchUpInside to place the call when the user taps the button
@@ -74,6 +73,30 @@ namespace iPadPhone
 
 				// Make the call
 				_connection = _device.Connect(parameters, null);
+			};
+
+			// Add a UIButton to press any key
+			var anyKeyButton = new UIButton (UIButtonType.Custom);
+			anyKeyButton.SetBackgroundImage(UIImage.FromBundle("any_key"), UIControlState.Normal);
+			anyKeyButton.Frame = new RectangleF (200, 430, 400, 40);
+			this.View.Add (anyKeyButton);
+
+			anyKeyButton.TouchUpInside += (sender, e) => {
+				if (_connection != null && _connection.State == TCConnectionState.Connected) {
+					//We can't just press 'any' key so we'll press 1
+					_connection.SendDigits("1");
+				}
+			};
+
+			// Add a UIButton to hang up
+			var hangupButton = new UIButton (UIButtonType.Custom);
+			hangupButton.SetBackgroundImage(UIImage.FromBundle("hangup_button"), UIControlState.Normal);
+			hangupButton.Frame = new RectangleF (200, 480, 400, 40);
+			this.View.Add (hangupButton);
+
+			// Hang up the call
+			hangupButton.TouchUpInside += (sender, e) => {
+				_connection.Disconnect();
 			};
 		}
 

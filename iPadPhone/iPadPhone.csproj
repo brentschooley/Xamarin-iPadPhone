@@ -119,5 +119,9 @@
     <BundleResource Include="Resources\Twilio_logo_red%402x~ipad.png" />
     <BundleResource Include="Resources\call_button%402x~ipad.png" />
     <BundleResource Include="Resources\call_button~ipad.png" />
+    <BundleResource Include="Resources\any_key~ipad.png" />
+    <BundleResource Include="Resources\any_key%402x~ipad.png" />
+    <BundleResource Include="Resources\hangup_button~ipad.png" />
+    <BundleResource Include="Resources\hangup_button%402x~ipad.png" />
   </ItemGroup>
 </Project>
